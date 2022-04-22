@@ -17,6 +17,8 @@ public class Composition
         int numWords = 1;
         dictionary = fillArray(dictionary);
         
+        checkAll(dictionary);
+        
     }
     public static String[] fillArray(String[] dictionary)
     {
@@ -32,12 +34,14 @@ public class Composition
                 dictionary[linesScanned] = fin.nextLine();   
                 linesScanned++;
                 temp = new String[linesScanned + 1];
-                
-                for(int i = 0; i < dictionary.length; i++)
+                if(fin.hasNextLine())
                 {
-                    temp[i] = dictionary[i];
+                    for(int i = 0; i < dictionary.length; i++)
+                    {
+                        temp[i] = dictionary[i];
+                    }
+                    dictionary = temp;
                 }
-                dictionary = temp;
             }
         }
         catch(FileNotFoundException e)
@@ -54,22 +58,45 @@ public class Composition
         Arrays.sort(dictionary);
         return dictionary;
     }
-    public String checkWord(String[] dictionary, String concatenatedWords, String word, String subWord,int index)
+    public static String checkWord(String[] dictionary, String concatenatedWords, String word, String subWord, String fullWord)
     {
-        //String[] wordsReturned;
-        if(index == word.length())
+        String wordReturned = concatenatedWords;
+        
+
+        if(subWord.compareTo(word) != 0)
         {
-            return concatenatedWords;
+            int foundAt = Arrays.binarySearch(dictionary, subWord);
+            
+            if(foundAt >= 0)
+            {
+                concatenatedWords += subWord + " ";
+                word = word.substring(subWord.length());
+                subWord = word.substring(0, 1);
+                //checkWord(dictionary, concatenatedWords, word, subWord);
+            }
+            else
+            {
+                subWord = word.substring(0, subWord.length() + 1);   
+                //checkWord(dictionary, concatenatedWords, word, subWord);
+            }
+            concatenatedWords = checkWord(dictionary, concatenatedWords, word, subWord, fullWord);
+            
         }
         else
         {
-            int foundAt = Arrays.binarySearch(dictionary, word);
-            
-            if(foundAt > 0)
+            if(Arrays.binarySearch(dictionary, subWord) >= 0 && subWord.compareTo(fullWord) != 0)
             {
-                concatenatedWords += " " + dictionary[foundAt];
-                index = 
+                concatenatedWords += subWord;   
             }
+            wordReturned = concatenatedWords;   
+        }
+        return concatenatedWords;
+    }
+    public static void checkAll(String[] dictionary)
+    {
+        for(int i = 0; i < dictionary.length; i++)
+        {
+            System.out.println(dictionary[i] + ":" + checkWord(dictionary, "", dictionary[i], dictionary[i].substring(0,1), dictionary[i]));   
         }
     }
 }
