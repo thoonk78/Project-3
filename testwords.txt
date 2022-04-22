@@ -1,1 +1,4 @@
-alpha bravo charlie delta echo
+alpha alpha bravo
+bravo bravo bravo
+charlie alpha alpha
+delta bravo bravo

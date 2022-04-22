@@ -19,12 +19,12 @@ public class MyWord implements Comparable<MyWord>
         int i = 0;
         while(i < this.word.length() && i < otherWord.word.length() && equal == true)
         {
-            if(this.word.charAt(i) > otherWord.word.charAt(i))
+            if(this.word.toLowerCase().charAt(i) > otherWord.word.toLowerCase().charAt(i))
             {
                 compareVal = -1;
                 equal = false;
             }
-            else if(this.word.charAt(i) < otherWord.word.charAt(i))
+            else if(this.word.toLowerCase().charAt(i) < otherWord.word.toLowerCase().charAt(i))
             {
                 compareVal = 1;   
                 equal = false;

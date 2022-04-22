@@ -37,15 +37,6 @@ public class SortTest
             fin = new Scanner(new File(inputFile));
             int linesScanned = 0;
             
-            if(wordArray.length < linesScanned + 1)
-            {
-                MyWord[] temp = new MyWord[linesScanned];
-                for(int i  = 0; i < wordArray.length; i++)
-                {
-                    temp[i] = wordArray[i];
-                }
-                wordArray = temp;
-            }
             while(fin.hasNextLine())
             {
                     if(wordArray.length < linesScanned + 1)
