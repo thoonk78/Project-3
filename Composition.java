@@ -99,7 +99,8 @@ public class Composition
                 }
                 else
                 {
-                    subWord = word.substring(0, subWord.length() + 1);                 }
+                    subWord = word.substring(0, subWord.length() + 1);                 
+                }
             }
             else
             {
