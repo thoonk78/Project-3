@@ -4,12 +4,12 @@ import java.io.File;
 import java.io.PrintWriter;
 import java.io.FileNotFoundException;
 /**
- * Write a description of class Composition here.
+ * Write a description of class CompositionTwo here.
  *
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Composition
+public class CompositionTwo
 {
     public static void main(String[] args)
     {
@@ -21,7 +21,7 @@ public class Composition
         PrintWriter fout = null;
         try
         {
-            fout = new PrintWriter(new File("output/composition.txt"));
+            fout = new PrintWriter(new File("output/moreCompositions.txt"));
             checkAll(dictionary, fout);
         }
         catch(FileNotFoundException e)
@@ -68,17 +68,19 @@ public class Composition
         Arrays.sort(dictionary);
         return dictionary;
     }
-    public static void checkWord(String[] dictionary, String[] concatenatedWords, String word, String subWord, PrintWriter fout)
+    public static void checkWord(String[] dictionary, String concatenatedWords, String word, String subWord, String fullWord, int wordCount, PrintWriter fout)
     {
-        String[] wordReturned = concatenatedWords;
-        String foundWord = "";
+        //String[] wordReturned = concatenatedWords;
+        //String foundWord = "";
         
-        if(concatenatedWords[0] == null && subWord.length() < word.length())
+        if(subWord.length() < word.length())
         {
             if(Arrays.binarySearch(dictionary, subWord) >= 0)
             {
-                concatenatedWords[0] = subWord;
-                subWord = word.substring(subWord.length());
+                concatenatedWords += subWord + " ";
+                word = word.substring(subWord.length());
+                subWord = word.substring(0,1);
+                wordCount ++;
                 //checkWord(dictionary, concatenatedWords, word, subWord, fullWord);
             }
             else
@@ -86,22 +88,13 @@ public class Composition
                 subWord = word.substring(0, subWord.length() + 1);   
                 //checkWord(dictionary, concatenatedWords, word, subWord, fullWord);
             }
-            checkWord(dictionary, concatenatedWords, word, subWord, fout);
+            checkWord(dictionary, concatenatedWords, word, subWord, fullWord, wordCount, fout);
         }
-        else if(concatenatedWords[1] == null && subWord.length() < word.length())
+        else if(wordCount >= 3 && Arrays.binarySearch(dictionary, subWord) >= 0)
         {
-            if(Arrays.binarySearch(dictionary, subWord) >= 0 && subWord.length() == word.substring(subWord.length()).length())
-            {
-                concatenatedWords[1] = subWord;
-                //subWord = word.substring(subWord.length());
-                fout.println(word + ":" + concatenatedWords[0] + " " + concatenatedWords[1] + "\n");
-            }
-            else
-            {
-                subWord = word.substring(0, subWord.length() + 1); 
-                //checkWord(dictionary, concatenatedWords, word, subWord, fullWord);
-            }
-            checkWord(dictionary, concatenatedWords, word, subWord, fout);
+            concatenatedWords += subWord;
+            fout.println(fullWord + ":" + concatenatedWords + "\n");
+            //checkWord(dictionary, concatenatedWords, word, subWord, fout);
         }    
         //return allConcat;
     }
@@ -110,7 +103,7 @@ public class Composition
         String allConcat = "";
         for(int i = 0; i < dictionary.length; i++)
         {
-            checkWord(dictionary, new String[2], dictionary[i], dictionary[i].substring(0,1), fout);   
+            checkWord(dictionary, "", dictionary[i], dictionary[i].substring(0,1), dictionary[i], 0, fout);   
         }
         //return allConcat;
     }
