@@ -1,10 +1,13 @@
 #BlueJ class context
 comment0.target=MyWord
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ MyWord\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ This\ class\ stores\ a\ String\ and\ implements\ the\ Comparable\ interface.\r\n\r\n\ @author\ Samuel\ Ayoade\ &\ Keith\ Thoong\r\n\ @version\ April\ 24th,\ 2022\r\n
 comment1.params=word
 comment1.target=MyWord(java.lang.String)
+comment1.text=\r\n\ MyWord\ Constructor\:\ sets\ default\ word\r\n\r\n\ @param\ word\:\ word\ passed\ in.\r\n
 comment2.params=otherWord
 comment2.target=int\ compareTo(MyWord)
+comment2.text=\r\n\ Method\ compareTo\:\ overrides\ comparable\ overide\ class.\r\n\r\n\ @param\ otherWord\:\ the\ word\ being\ compared\r\n\ @return\ returns\ integer\ value\ after\ comparison\r\n
 comment3.params=
 comment3.target=java.lang.String\ toString()
+comment3.text=\r\n\ Method\ toString\:\ returns\ string\ format\ of\ word\ \r\n\r\n\ @return\ a\ string\r\n
 numComments=4

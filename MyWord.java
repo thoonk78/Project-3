@@ -1,17 +1,30 @@
 
 /**
- * Write a description of class MyWord here.
+ * This class stores a String and implements the Comparable interface.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Samuel Ayoade & Keith Thoong
+ * @version April 24th, 2022
  */
 public class MyWord implements Comparable<MyWord>
 {
     String word;
+    /**
+     * MyWord Constructor: sets default word
+     *
+     * @param word: word passed in.
+     */
     public MyWord(String word)
     {
         this.word = word;
     }
+    
+    /**
+     * Method compareTo: overrides comparable overide class.
+     *
+     * @param otherWord: the word being compared
+     * @return returns integer value after comparison
+     */
+    @Override
     public int compareTo(MyWord otherWord)
     {
         boolean equal = true;
@@ -58,6 +71,14 @@ public class MyWord implements Comparable<MyWord>
         }
         return compareVal;
     }
+    
+    
+    /**
+     * Method toString: returns string format of word 
+     *
+     * @return a string
+     */
+    @Override
     public String toString()
     {
         return this.word;   
