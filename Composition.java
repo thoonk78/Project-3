@@ -4,13 +4,16 @@ import java.io.File;
 import java.io.PrintWriter;
 import java.io.FileNotFoundException;
 /**
- * Write a description of class Composition here.
+ * Checks to see if a word can be broken into two words and outputs to a file if true
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Samuel Ayoade, Keith Thoong
+ * @version 4/24/2022
  */
 public class Composition
 {
+    /**
+     * Main method to call methods to check the word
+     */
     public static void main(String[] args)
     {
         String[] dictionary = new String[1];
@@ -37,6 +40,12 @@ public class Composition
         }
         
     }
+    /**
+     * Fills an array with words from a .txt file
+     * 
+     * @param dictionary the array to bee filled with words
+     * @return the array filled with words
+     */
     public static String[] fillArray(String[] dictionary)
     {
         Scanner fin = null;
@@ -44,7 +53,6 @@ public class Composition
         {
             fin = new Scanner(new File("dictionary.txt"));
             int linesScanned = 0;
-            //String[] temp = new String[1];
             String temp = "";
             
             while(fin.hasNextLine())
@@ -68,6 +76,14 @@ public class Composition
         Arrays.sort(dictionary);
         return dictionary;
     }
+    /**
+     * Checks to see if a word can be broken into two words.
+     * 
+     * @param dictionary the array with words to be checked
+     * @param word the word being checked
+     * @param subword the subword of the word being checked
+     * @param fou the PrinteWriter used to write to the output file
+     */
     public static void checkWord(String[] dictionary, String word, String subWord, PrintWriter fout)
     {
         //String secondPart;
@@ -76,7 +92,6 @@ public class Composition
         {
             if(subWord.length() < word.length() && Arrays.binarySearch(dictionary, subWord) >= 0)
             {
-                //String secondPart = word.substring(subWord.length());
                 if(Arrays.binarySearch(dictionary, word.substring(subWord.length())) >= 0)
                 {
                     secondFound = true;
@@ -84,9 +99,7 @@ public class Composition
                 }
                 else
                 {
-                    subWord = word.substring(0, subWord.length() + 1); 
-                    //checkWord(dictionary, concatenatedWords, word, subWord, fout);
-                }
+                    subWord = word.substring(0, subWord.length() + 1);                 }
             }
             else
             {
@@ -94,6 +107,12 @@ public class Composition
             }
         }
     }
+    /**
+     * Calls the checkWord method on all words in the array
+     * 
+     * @param dictionary the array of words to check
+     * @param fout the PrintWriter to write the the output file
+     */
     public static void checkAll(String[] dictionary, PrintWriter fout)
     {
         String allConcat = "";
@@ -101,6 +120,5 @@ public class Composition
         {
             checkWord(dictionary, dictionary[i], dictionary[i].substring(0,1), fout);   
         }
-        //return allConcat;
     }
 }

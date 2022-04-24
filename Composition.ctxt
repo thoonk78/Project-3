@@ -1,12 +1,16 @@
 #BlueJ class context
 comment0.target=Composition
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Composition\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Checks\ to\ see\ if\ a\ word\ can\ be\ broken\ into\ two\ words\ and\ outputs\ to\ a\ file\ if\ true\r\n\r\n\ @author\ Samuel\ Ayoade,\ Keith\ Thoong\r\n\ @version\ 4/24/2022\r\n
 comment1.params=args
 comment1.target=void\ main(java.lang.String[])
+comment1.text=\r\n\ Main\ method\ to\ call\ methods\ to\ check\ the\ word\r\n
 comment2.params=dictionary
 comment2.target=java.lang.String[]\ fillArray(java.lang.String[])
+comment2.text=\r\n\ Fills\ an\ array\ with\ words\ from\ a\ .txt\ file\r\n\ \r\n\ @param\ dictionary\ the\ array\ to\ bee\ filled\ with\ words\r\n\ @return\ the\ array\ filled\ with\ words\r\n
 comment3.params=dictionary\ word\ subWord\ fout
 comment3.target=void\ checkWord(java.lang.String[],\ java.lang.String,\ java.lang.String,\ java.io.PrintWriter)
+comment3.text=\r\n\ Checks\ to\ see\ if\ a\ word\ can\ be\ broken\ into\ two\ words.\r\n\ \r\n\ @param\ dictionary\ the\ array\ with\ words\ to\ be\ checked\r\n\ @param\ word\ the\ word\ being\ checked\r\n\ @param\ subword\ the\ subword\ of\ the\ word\ being\ checked\r\n\ @param\ fou\ the\ PrinteWriter\ used\ to\ write\ to\ the\ output\ file\r\n
 comment4.params=dictionary\ fout
 comment4.target=void\ checkAll(java.lang.String[],\ java.io.PrintWriter)
+comment4.text=\r\n\ Calls\ the\ checkWord\ method\ on\ all\ words\ in\ the\ array\r\n\ \r\n\ @param\ dictionary\ the\ array\ of\ words\ to\ check\r\n\ @param\ fout\ the\ PrintWriter\ to\ write\ the\ the\ output\ file\r\n
 numComments=5
