@@ -4,13 +4,18 @@ import java.io.File;
 import java.io.PrintWriter;
 import java.io.FileNotFoundException;
 /**
- * Write a description of class CompositionTwo here.
+ * Program takes a .txt file as a dictionary of words and checks if any of those words can be broken into three
+ * or more words. 
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Samuel Ayoade, Keith Thoong
+ * @version 4/24/2022
  */
 public class CompositionTwo
 {
+    /**
+     * Main method for initiating the check
+     * 
+     */
     public static void main(String[] args)
     {
         String[] dictionary = new String[1];
@@ -37,6 +42,12 @@ public class CompositionTwo
         }
         
     }
+    /**
+     * Fills an array with the words from a .txt file
+     * 
+     * @param dictionary the array to be filled
+     * @return the array filled with words from the .txt file
+     */
     public static String[] fillArray(String[] dictionary)
     {
         Scanner fin = null;
@@ -44,7 +55,6 @@ public class CompositionTwo
         {
             fin = new Scanner(new File("dictionary.txt"));
             int linesScanned = 0;
-            //String[] temp = new String[1];
             String temp = "";
             
             while(fin.hasNextLine())
@@ -68,11 +78,19 @@ public class CompositionTwo
         Arrays.sort(dictionary);
         return dictionary;
     }
+    /**
+     * Checks to see if a word can be broken into 3 or more words
+     * 
+     * @param dictionary the array to reference all words
+     * @param concatenatedWords a String of subwords that the word can be broken into
+     * @param word the word to check
+     * @param subWord a string of parts of the full word to be checked as a valid word
+     * @param fullWord the full word being cheked
+     * @param wordCount the number of subwords that have been found
+     * @param fout the PrintWriter to write to the file.
+     */
     public static void checkWord(String[] dictionary, String concatenatedWords, String word, String subWord, String fullWord, int wordCount, PrintWriter fout)
     {
-        //String[] wordReturned = concatenatedWords;
-        //String foundWord = "";
-        
         if(subWord.length() < word.length())
         {
             if(Arrays.binarySearch(dictionary, subWord) >= 0)
@@ -81,12 +99,10 @@ public class CompositionTwo
                 word = word.substring(subWord.length());
                 subWord = word.substring(0,1);
                 wordCount ++;
-                //checkWord(dictionary, concatenatedWords, word, subWord, fullWord);
             }
             else
             {
                 subWord = word.substring(0, subWord.length() + 1);   
-                //checkWord(dictionary, concatenatedWords, word, subWord, fullWord);
             }
             checkWord(dictionary, concatenatedWords, word, subWord, fullWord, wordCount, fout);
         }
@@ -94,10 +110,14 @@ public class CompositionTwo
         {
             concatenatedWords += subWord;
             fout.println(fullWord + ":" + concatenatedWords + "\n");
-            //checkWord(dictionary, concatenatedWords, word, subWord, fout);
         }    
-        //return allConcat;
     }
+    /**
+     * Checks all the words in the .txt file to see if it can be broken up
+     * 
+     * @param dictionary the array of words to be checked
+     * @param fout the PrintWriter to write to the file
+     */
     public static void checkAll(String[] dictionary, PrintWriter fout)
     {
         String allConcat = "";
@@ -105,6 +125,5 @@ public class CompositionTwo
         {
             checkWord(dictionary, "", dictionary[i], dictionary[i].substring(0,1), dictionary[i], 0, fout);   
         }
-        //return allConcat;
     }
 }
