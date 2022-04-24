@@ -90,7 +90,7 @@ public class CompositionTwo
             }
             checkWord(dictionary, concatenatedWords, word, subWord, fullWord, wordCount, fout);
         }
-        else if(wordCount >= 3 && Arrays.binarySearch(dictionary, subWord) >= 0)
+        else if(wordCount >= 2 && Arrays.binarySearch(dictionary, subWord) >= 0)
         {
             concatenatedWords += subWord;
             fout.println(fullWord + ":" + concatenatedWords + "\n");

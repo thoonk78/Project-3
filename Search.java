@@ -67,7 +67,7 @@ public class Search
                     {
                         String word = lineReader.next();
                         //System.out.print(word);
-                        if(word.compareTo(phrase) == 0)
+                        if(phrase.toLowerCase().compareTo(word.toLowerCase()) == 0)
                         {
                             foundPhrase = true;
                             occurrences++;   
@@ -78,11 +78,11 @@ public class Search
                     {
                         if(perLine == true)
                         {
-                            fout.printf("Line    %d - %d\n", lineRead, occurrences);
+                            fout.printf("Line    %d - %d\n", lineRead + 1, occurrences);
                         }
                         else
                         {
-                            fout.printf("Line    %d\n", lineRead);
+                            fout.printf("Line    %d\n", lineRead + 1);
                         }
                     }
                     lineRead++;

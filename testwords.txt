@@ -1,4 +1,4 @@
 alpha alpha bravo
-bravo bravo bravo
-charlie alpha alpha
+bravo bravo Bravo
+charlie Alpha alpha
 delta bravo bravo
