@@ -3,13 +3,20 @@ import java.io.File;
 import java.io.PrintWriter;
 import java.io.FileNotFoundException;
 /**
- * Write a description of class Search here.
+ * This class has a main method that is expected to take three command-line arguments: an input file location, a search term or phrase, and “true” or “false” 
+ * to indicate whether per-line occurrences should be determined and output. Looks for how many times word appears in phrase.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Samuel Ayoade & Keith Thoong
+ * @version April 24th, 2022
  */
 public class Search
 {
+    /**
+     * Method main: Takes three command-line arguments: an input file location, a search term or phrase, and “true” or “false” 
+     * to indicate whether per-line occurrences should be determined and output.
+     *
+     * @param args A parameter
+     */
     public static void main(String[] args)
     {
         String inFile = "";
@@ -26,7 +33,7 @@ public class Search
             inFile = args[0];
             phrase = args[1];
             perLineChoice = args[2];
-            
+
             if(perLineChoice.toLowerCase() == "true")
             {
                 perLine = true;
@@ -41,22 +48,19 @@ public class Search
                 System.exit(0);
             }
         }
-        
+
         Scanner fin = null;
         PrintWriter fout = null;
-        
+
         try
         {
             fin = new Scanner(new File(inFile));    
             int lineRead = 0;
             String line;
-            
-
             try
             {
                 fout = new PrintWriter("output/" + phrase + "_ocurrences.txt");   
-                
-                
+
                 while(fin.hasNextLine())
                 {
                     line = fin.nextLine();
@@ -66,13 +70,11 @@ public class Search
                     while(lineReader.hasNext())
                     {
                         String word = lineReader.next();
-                        //System.out.print(word);
                         if(phrase.toLowerCase().compareTo(word.toLowerCase()) == 0)
                         {
                             foundPhrase = true;
                             occurrences++;   
                         }
-                        //System.out.println(" " + foundPhrase);
                     }
                     if(foundPhrase == true)
                     {

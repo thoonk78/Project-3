@@ -4,13 +4,18 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
 /**
- * Write a description of class SortTest here.
+ * This class has a main method that is expected to take one or two command-line arguments. The first argument must be given, and it should be a path to a file for input.
+ * Reads in all words in the file and then sorts the array using the following method: Arrays.sort(...). Once your words are sorted, output them to the correct output file, 
+ * separating each word by a newline.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Samuel Ayoade & Keith Thoong
+ * @version April 24th, 2022
  */
 public class SortTest
 {
+    /**
+     * Method main: Take's one or two command-line arguments and reads in all words in the file and then sorts the array.
+     */
     public static void main(String[] args)
     {
         String inputFile = "default.txt";
